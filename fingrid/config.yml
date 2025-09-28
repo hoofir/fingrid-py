@@ -1,0 +1,122 @@
+# ------------------------------
+#  Fingrid Open Data API
+# ------------------------------
+type: REST
+name: avoindata-api
+description: API for Fingrid Open Data
+server: https://data.fingrid.fi/api/
+authentication:
+  name: x-api-key
+  type: apiKey
+  in: header
+limitation:
+  max_call_per_minute: 10
+  max_call_per_day: 10000
+notes:
+- Free of charge
+- Requires registration
+- API keys are fixed term
+
+# ------------------------------
+#  List of available endpoints
+# ------------------------------
+endpoints:
+  GetActiveNotifications:
+    method: GET
+    path: /notifications/active
+    description: Return list of active service notification or empty response
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetActiveNotifications
+    required_params:
+    optional_params:
+
+  GetDataset:
+    method: GET
+    path: /datasets/{datasetId}
+    description: Returns metadata of a single dataset or 404 error if not found
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetDataset
+    required_params:
+      - datasetId
+    optional_params:
+
+  GetDatasetData:
+    method: GET
+    path: /datasets/{datasetId}/data
+    description: Returns data of a single dataset or empty array if no data is found
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetDatasetData
+    required_params:
+    - datasetId
+    - startTime
+    - endTime
+    optional_params:
+      pageSize: 20000
+      sortBy: startTime
+      sortOrder: asc
+
+  GetDatasetFile:
+    method: GET
+    path: /datasets/{datasetId}/files/{fileId}
+    description: Return a single datasetfile or 404 error if not found
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetDatasetFile
+    required_params:
+    - datasetId
+    - fileId
+    optional_params:
+
+  GetDatasetFileData:
+    method: GET
+    path: /datasets/{datasetId}/files
+    description: Returns datasetfiledata or 404 error if not found or a 422 error if validation fails
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetDatasetFileData
+    required_params:
+    - datasetId
+    - startTime
+    - endTime
+    optional_params:
+      pageSize: 20000
+      sortOrder: asc
+
+  GetDatasetShorts:
+    method: GET
+    path: /datasets
+    description: |
+      Returns metadata of all public datasets, with pagination. 
+      If no parameters are given, returns all datasets sorted by dataset ID. 
+      If search parameter is given, returns datasets sorted by relevance.
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetDatasetShorts
+    required_params:
+    optional_params:
+      pageSize: 20000
+      orderBy: id
+
+  GetHealthStatus:
+    method: GET
+    path: /health
+    description: Returns status of services
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetHealthStatus
+    required_params:
+    optional_params:
+  
+  GetLastDataByDataset:
+    method: GET
+    path: /datasets/{datasetId}/data/latest
+    description: Return a last data by dataset or 404 error if not found
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetLastDataByDataset
+    required_params:
+    - datasetId
+    optional_params:
+
+  GetMultipleTimeseriesData:
+    method: GET
+    path: /data
+    description: |
+      Get data for multiple datasets. Returns empty array if no data is found. 
+      If only part of requested datasets have data in generel or for requested timespan, those data are returned.
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetMultipleTimeseriesData
+    required_params:
+    - datasets
+    - startTime
+    - endTime
+    optional_params:
+      pageSize: 20000
+      sortBy: startTime
+      sortOrder: asc

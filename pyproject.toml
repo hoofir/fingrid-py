@@ -1,0 +1,60 @@
+[project]
+name = "fingrid-py"
+version = "0.1.0"
+description = "Python client for Fingrid API"
+readme = "README.md"
+keywords = [
+    "fingrid", 
+    "fingrid-py", 
+    "py-fingrid", 
+    "fingrid-api", 
+    "fingrid API", 
+    "fingrid avoindata"
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.3.2",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = ["ruff", "deptry", "pyright", "pytest", "requests-mock"] 
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = "."
+addopts = "-v"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+include = ["fingrid/*.py", "tests/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "C"]
+ignore = ["E501"]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+line-ending = "auto"
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+docstring-code-line-length = 72
+skip-magic-trailing-comma = false
+
+[tool.deptry]
+ignore_notebooks = true
+requirements_files = ["requirements.txt", "requirements-dev.txt"]
+
+[tool.pyright]
+include = ["fingrid/*.py"]
+
+[build-system]
+requires = ["uv-build"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = "."
+module-name = "fingrid"
