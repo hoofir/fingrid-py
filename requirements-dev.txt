@@ -1,0 +1,5 @@
+ruff
+deptry
+pyright
+pytest
+requests-mock

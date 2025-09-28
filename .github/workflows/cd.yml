@@ -1,0 +1,38 @@
+name: CD
+
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  build-release-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # allows: creating releases, pushing commits, uploading artifacts
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    - name: Run checks
+      run: make check
+
+    - name: Run tests
+      run: make test
+
+    - name: Build package
+      run: make build
+    
+    - name: Create GitHub release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: dist/*.whl
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Publish package to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
