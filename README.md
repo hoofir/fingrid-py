@@ -11,13 +11,14 @@ Python package to provide access to Fingrid (Finnish TSO) datasets through open 
 5. If you want, you can also [delete your account](https://fingridavoindata.b2clogin.com/fingridavoindata.onmicrosoft.com/b2c_1a_signup_signin/oauth2/v2.0/authorize?client_id=a226de5e-0083-4ae3-8054-b0a65498f1d9&scope=openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Fdata.fingrid.fi%2F&client-request-id=b4058e9e-28ed-431d-a83f-41646e648e41&response_mode=fragment&response_type=code&x-client-SKU=msal.js.browser&x-client-VER=2.38.4&client_info=1&code_challenge=bHfbRl36HXkYHpZM3CchqRP1SLJTDoaO2wPBloOYZEA&code_challenge_method=S256&nonce=e9cf8dd3-1939-4065-bc6c-2d57c4f5dc03&state=eyJpZCI6IjkyNDljODY5LWJhZGYtNDcyNi04YWJlLWUzMTI1ZWM4NzIyZCIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D&ui_locales=en) and the related API-key.
 
 ## Installation
-```
+```bash
 pip install fingrid-py
 ```
 
 ## Usage
 ### Fetch data using utility functions
-```
+
+```python
 api_key = "<your own API key>"
 
 from fingrid import get_data, get_series_metadata
@@ -38,13 +39,15 @@ data_df = get_data(
 ### Call directly API endpoints
 There are 9 different endpoints provided by API. All endpoints work in the same way with the same methods. \
 You can easily import and instantiate the endpoint's class and call the `get()` method to get the raw data in json format.
-```
+
+```python
 # Example
 
 from fingrid import GetHealthStatus
 
 health = GetHealthStatus(api_key).get()
 ```
+
 Check out the parameters of each endpoint [here](https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetActiveNotifications).\
 Alternatively, you can call the `get()` method and the system will complain if any required parameter is missing.
 
