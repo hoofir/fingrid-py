@@ -1,4 +1,6 @@
 # fingrid-py
+[![CI](https://github.com/hoofir/fingrid-py/actions/workflows/ci.yml/badge.svg)](https://github.com/hoofir/fingrid-py/actions/workflows/ci.yml)
+
 Python package to provide access to Fingrid (Finnish TSO) datasets through open **REST API** interface.
 
 ## How to Get Started
