@@ -2,8 +2,12 @@
 [![PyPI](https://img.shields.io/pypi/v/fingrid-py.svg)](https://pypi.org/project/fingrid-py/)
 [![CI](https://github.com/hoofir/fingrid-py/actions/workflows/ci.yml/badge.svg)](https://github.com/hoofir/fingrid-py/actions/workflows/ci.yml)
 ![Repo Size](https://img.shields.io/github/repo-size/hoofir/fingrid-py.svg)
-[![Downloads](https://img.shields.io/pypi/dm/fingrid-py.svg)](https://pypistats.org/packages/fingrid-py)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json&label=linting)](https://github.com/astral-sh/ruff)
+[![Pyright](https://img.shields.io/badge/types-pyright-red)](https://github.com/microsoft/pyright)
+[![Deptry](https://img.shields.io/badge/dependencies-deptry-yellow)](https://github.com/fpgmaas/deptry)
+[![Pytest](https://img.shields.io/badge/tests-pytest-fff?logo=pytest&logoColor=white)](https://github.com/pytest-dev/pytest)
 [![License](https://img.shields.io/github/license/hoofir/fingrid-py.svg)](https://github.com/hoofir/fingrid-py/blob/main/LICENSE)
+
 
 Python package to provide access to Fingrid (Finnish TSO) datasets through open **REST API** interface.
 
