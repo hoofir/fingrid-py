@@ -24,8 +24,7 @@ load_dotenv()
 API_KEY = os.getenv("FINGRID_API_KEY")
 if not API_KEY:
     pytest.skip(
-        "FINGRID_API_KEY not set — integration tests skipped", 
-        allow_module_level=True
+        "FINGRID_API_KEY not set — integration tests skipped", allow_module_level=True
     )
 
 # -------------------------------------------
@@ -61,7 +60,7 @@ def test_get_dataset():
 
 
 def test_get_dataset_data():
-    """Test GetDatasetData.get() with time range."""    
+    """Test GetDatasetData.get() with time range."""
     resp = GetDatasetData(
         API_KEY,
         datasetId=317,
@@ -72,19 +71,16 @@ def test_get_dataset_data():
 
 
 def test_get_last_data_by_dataset():
-    """Test GetLastDataByDataset.get() returns response."""    
-    resp = GetLastDataByDataset(
-        API_KEY, 
-        datasetId=245
-    ).get(verbose=False)
+    """Test GetLastDataByDataset.get() returns response."""
+    resp = GetLastDataByDataset(API_KEY, datasetId=245).get(verbose=False)
     assert resp is None or isinstance(resp, (dict, list))
 
 
 def test_get_multiple_timeseries_data():
-    """Test GetMultipleTimeseriesData.get() with single dataset."""    
+    """Test GetMultipleTimeseriesData.get() with single dataset."""
     resp = GetMultipleTimeseriesData(
         API_KEY,
-        datasets=[317,334,277],
+        datasets=[317, 334, 277],
         startTime="2026-01-01T00:00:00Z",
         endTime="2026-01-02T00:00:00Z",
     ).get(verbose=False)
@@ -92,7 +88,7 @@ def test_get_multiple_timeseries_data():
 
 
 def test_get_updated_timeseries_data():
-    """Test GetUpdatedTimeseriesData.get() with recent days."""    
+    """Test GetUpdatedTimeseriesData.get() with recent days."""
     resp = GetUpdatedTimeseriesData(
         API_KEY,
         datasets=317,
@@ -123,4 +119,3 @@ def test_get_data():
         to_dataframe=True,
     )
     assert isinstance(df, pd.DataFrame)
-
