@@ -13,24 +13,17 @@ keywords = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "deptry>=0.23.1",
     "pandas>=2.3.2",
-    "pyright>=1.1.405",
-    "pytest>=8.4.2",
     "pyyaml>=6.0.2",
     "requests>=2.32.3",
-    "requests-mock>=1.12.1",
-    "ruff>=0.13.0",
 ]
 
 [dependency-groups]
 dev = [
     "deptry>=0.23.1",
-    "pandas>=2.3.2",
-    "pyright>=1.1.405",
+    "pyright>=1.1.408",
     "pytest>=8.4.2",
-    "pyyaml>=6.0.2",
-    "requests>=2.32.3",
+    "python-dotenv>=1.2.1",
     "requests-mock>=1.12.1",
     "ruff>=0.13.0",
 ]
@@ -38,7 +31,7 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = "."
-addopts = "-v"
+addopts = ["-v", "--ignore=tests/test_integration.py"]
 
 [tool.ruff]
 line-length = 88

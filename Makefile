@@ -1,4 +1,4 @@
-.PHONY: build check clean install publish run test upgrade
+.PHONY: build check clean install run test upgrade
 
 build:
 	uv build --wheel
@@ -7,7 +7,7 @@ check:
 	curl -L https://gist.githubusercontent.com/hoofir/02feeb244aacc4e2ddb92aba15f1990b/raw/check.sh | sh
 
 clean:
-	rm -rf build dist *.egg-info .vscode .python-version .venv uv.lock __pycache__ .pytest_cache .ruff_cache .mypy_cache
+	rm -rf build dist *.egg-info .vscode .venv __pycache__ .pytest_cache .ruff_cache .mypy_cache
 
 install:
 	uv sync --frozen

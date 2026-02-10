@@ -123,7 +123,7 @@ endpoints:
   
   GetUpdatedTimeseriesData:
     method: GET
-    path: data/updates?datasets={datasets}
+    path: /data/updates
     description: |
       Returns data by dataset ids that has been modified within the specified time period.
     reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetUpdatedTimeseriesData

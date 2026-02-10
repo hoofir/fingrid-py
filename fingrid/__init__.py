@@ -10,7 +10,6 @@ from .endpoint import (
     GetMultipleTimeseriesData,
     GetUpdatedTimeseriesData,
 )
-
 from .utils import (
     get_data,
     get_series_metadata,
