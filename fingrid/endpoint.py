@@ -155,7 +155,12 @@ class Endpoint:
         Returns:
             list[dict] | dict: Response of the Get request.
         """
-        page_size = self.info.get("optional_params", {}).get("pageSize", None)
+        optional_params = self.info.get("optional_params", {})
+
+        if isinstance(optional_params, dict):
+            page_size = optional_params.get("pageSize", None)
+        else:
+            page_size = None
 
         # for endpoints with no pagination → single call
         if not page_size:
@@ -174,6 +179,9 @@ class Endpoint:
                 "pageSize": page_size,
             }
             response = self._client.get(self.url, params)
+            if len(response["data"]) == 0:
+                logger.warning(f"Received empty response for page {page}")
+                break
 
             # collect data + log if needed
             all_data.extend(response.get("data", []))
@@ -271,6 +279,15 @@ class GetLastDataByDataset(Endpoint):
 class GetMultipleTimeseriesData(Endpoint):
     """
     Returns time series data of multiple datasets.
+    """
+
+    pass
+
+
+class GetUpdatedTimeseriesData(Endpoint):
+    """
+    Returns data by dataset ids that has been modified
+    within the specified time period.
     """
 
     pass

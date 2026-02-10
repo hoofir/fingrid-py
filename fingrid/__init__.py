@@ -8,6 +8,7 @@ from .endpoint import (
     GetHealthStatus,
     GetLastDataByDataset,
     GetMultipleTimeseriesData,
+    GetUpdatedTimeseriesData,
 )
 from .utils import (
     get_data,
@@ -15,6 +16,8 @@ from .utils import (
 )
 
 __all__ = [
+    "get_data",
+    "get_series_metadata",
     "GetActiveNotifications",
     "GetDataset",
     "GetDatasetData",
@@ -24,6 +27,5 @@ __all__ = [
     "GetHealthStatus",
     "GetLastDataByDataset",
     "GetMultipleTimeseriesData",
-    "get_data",
-    "get_series_metadata",
+    "GetUpdatedTimeseriesData",
 ]

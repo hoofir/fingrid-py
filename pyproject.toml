@@ -1,6 +1,6 @@
 [project]
 name = "fingrid-py"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python client for Fingrid API"
 readme = "README.md"
 keywords = [
@@ -11,7 +11,7 @@ keywords = [
     "fingrid API", 
     "fingrid avoindata"
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "pandas>=2.3.2",
     "pyyaml>=6.0.2",
@@ -19,12 +19,19 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["ruff", "deptry", "pyright", "pytest", "requests-mock"] 
+dev = [
+    "deptry>=0.23.1",
+    "pyright>=1.1.408",
+    "pytest>=8.4.2",
+    "python-dotenv>=1.2.1",
+    "requests-mock>=1.12.1",
+    "ruff>=0.13.0",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = "."
-addopts = "-v"
+addopts = ["-v", "--ignore=tests/test_integration.py"]
 
 [tool.ruff]
 line-length = 88

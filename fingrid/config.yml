@@ -120,3 +120,15 @@ endpoints:
       pageSize: 20000
       sortBy: startTime
       sortOrder: asc
+  
+  GetUpdatedTimeseriesData:
+    method: GET
+    path: /data/updates
+    description: |
+      Returns data by dataset ids that has been modified within the specified time period.
+    reference: https://developer-data.fingrid.fi/api-details#api=avoindata-api&operation=GetUpdatedTimeseriesData
+    required_params:
+    - datasets
+    optional_params:
+      days: 14
+      pageSize: 250
