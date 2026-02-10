@@ -274,3 +274,12 @@ class GetMultipleTimeseriesData(Endpoint):
     """
 
     pass
+
+
+class GetUpdatedTimeseriesData(Endpoint):
+    """
+    Returns data by dataset ids that has been modified 
+    within the specified time period.
+    """
+
+    pass
